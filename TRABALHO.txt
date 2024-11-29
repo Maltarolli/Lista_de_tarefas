@@ -1,0 +1,21 @@
+Comandos:
+#Atualizar o pip
+python.exe -m pip install --upgrade pip
+
+#Criar maquina virtual
+python -m venv venv
+
+# Linux/Mac executar maquina virtual
+source venv/bin/activate 
+
+# Windows executar maquina virtual
+venv\Scripts\activate      
+
+#instalar dependencia
+pip install fastapi uvicorn
+
+#Iniciar LocalHost
+uvicorn main:app --reload
+
+#Caso o de cima não de usar esse codigo
+python -m uvicorn main:app --reload
