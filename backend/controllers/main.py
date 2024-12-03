@@ -1,11 +1,20 @@
 from fastapi import FastAPI, HTTPException
 from starlette.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware  # Importa o middleware CORS
 from backend.models.models import Tarefa
 from backend.schema.schema import TarefaBase, TarefaCriada
 
 # Inicializa a aplicação FastAPI
 app = FastAPI()
 
+# Adiciona o middleware CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],  # Permite o React rodando no localhost:3000
+    allow_credentials=True,
+    allow_methods=["*"],  # Permite todos os métodos HTTP (GET, POST, PUT, DELETE)
+    allow_headers=["*"],  # Permite todos os headers (autenticação, content-type, etc.)
+)
 
 # Endpoint 1: Criar uma nova tarefa
 @app.post("/tarefas/", response_model=TarefaCriada)
@@ -40,7 +49,23 @@ def listar_tarefas():
         ) for tarefa in tarefas
     ]
 
-# Endpoint 3: Atualizar uma tarefa
+# Endpoint 3: Buscar uma tarefa por ID
+@app.get("/tarefas/{tarefa_id}", response_model=TarefaCriada)
+def buscar_tarefa(tarefa_id: int):
+    tarefa = Tarefa.buscar_tarefa(tarefa_id)  # Certifique-se de que esse método exista
+    if not tarefa:
+        raise HTTPException(status_code=404, detail="Tarefa não encontrada")
+    
+    return TarefaCriada(
+        id=tarefa.id,
+        titulo=tarefa.titulo,
+        descricao=tarefa.descricao,
+        status=tarefa.status,
+        create_tarefa=tarefa.create_tarefa,
+        update_tarefa=tarefa.update_tarefa
+    )
+
+# Endpoint 4: Atualizar uma tarefa
 @app.put("/tarefas/{tarefa_id}", response_model=TarefaCriada)
 def atualizar_tarefa(tarefa_id: int, tarefa: TarefaBase):
     sucesso = Tarefa.atualizar_tarefa(tarefa_id, tarefa.titulo, tarefa.descricao, tarefa.status)
@@ -57,7 +82,7 @@ def atualizar_tarefa(tarefa_id: int, tarefa: TarefaBase):
 
     return JSONResponse(status_code=201, content=tarefa_atualizada)
 
-# Endpoint 4: Deletar uma tarefa
+# Endpoint 5: Deletar uma tarefa
 @app.delete("/tarefas/{tarefa_id}")
 def deletar_tarefa(tarefa_id: int):
     sucesso = Tarefa.deletar_tarefa(tarefa_id)
