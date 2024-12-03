@@ -1,20 +1,10 @@
 from fastapi import FastAPI, HTTPException
 from starlette.responses import JSONResponse
-from fastapi.middleware.cors import CORSMiddleware  # Importa o middleware CORS
 from backend.models.models import Tarefa
 from backend.schema.schema import TarefaBase, TarefaCriada
 
 # Inicializa a aplicação FastAPI
 app = FastAPI()
-
-# Adiciona o middleware CORS
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Permite o React rodando no localhost:3000
-    allow_credentials=True,
-    allow_methods=["*"],  # Permite todos os métodos HTTP (GET, POST, PUT, DELETE)
-    allow_headers=["*"],  # Permite todos os headers (autenticação, content-type, etc.)
-)
 
 # Endpoint 1: Criar uma nova tarefa
 @app.post("/tarefas/", response_model=TarefaCriada)
