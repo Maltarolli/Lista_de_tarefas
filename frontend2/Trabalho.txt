@@ -1,0 +1,9 @@
+cd frontend2
+
+npm start 
+
+#Caso o npm start n funcione
+npm install
+
+#novamente apos o comando de cima
+npm start 
