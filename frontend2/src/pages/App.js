@@ -1,4 +1,4 @@
-import { getFunction } from "../services/APIService";
+import { getFunction, postFunction, deleteFunction, putFunction } from "../services/APIService";
 
 function App() {
   function btnGetFunctionClick() {
@@ -8,10 +8,22 @@ function App() {
   }
 
   function btnPostFunctionClick() {
-    getFunction()
+    postFunction()
         .then(data => console.log(data))
         .catch(err => console.error(err));
 }
+
+  function btnDeleteFunctionClick() {
+    deleteFunction()
+        .then(data => console.log(data))
+        .catch(err => console.error(err));
+  }
+
+  function btnPutFunctionClick() {
+    putFunction()
+        .then(data => console.log(data))
+        .catch(err => console.error(err));
+  }
 
   return (
     <>
@@ -21,6 +33,13 @@ function App() {
       <div>
           <button onClick={btnPostFunctionClick}>Post Function</button>
       </div>
+      <div>
+          <button onClick={btnDeleteFunctionClick}>Delete Function</button>
+      </div>
+      <div>
+          <button onClick={btnPutFunctionClick}>Put Function</button>
+      </div>
+      
     </>
   );
 }
