@@ -15,7 +15,7 @@ venv\Scripts\activate
 pip install fastapi uvicorn
 
 #Iniciar LocalHost
- uvicorn backend.controllers.main:app --reload
+uvicorn backend.controllers.main:app --reload
 
 #Caso o de cima não de usar esse codigo
 python -m uvicorn ackend.controllers.main:app --reload

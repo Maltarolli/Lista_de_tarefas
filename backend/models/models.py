@@ -25,6 +25,23 @@ class Tarefa:
             finally:
                 conn.close()
 
+
+
+    @staticmethod
+    def buscar_tarefa(id):
+        conn = get_connection()
+        if conn:
+            try:
+                cursor = conn.cursor()
+                cursor.execute("SELECT * FROM tarefas WHERE id = ?", (id,))
+                row = cursor.fetchone()
+                if row:
+                    return Tarefa(*row)  # Retorna a tarefa encontrada
+                return None  # Retorna None se nenhuma tarefa for encontrada
+            finally:
+                conn.close()
+
+
     @staticmethod
     def criar_tarefa(titulo, descricao, status):
         conn = get_connection()
