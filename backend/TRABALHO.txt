@@ -1,3 +1,5 @@
+Comandos:
+
 #Criar maquina virtual
 python -m venv venv
 
@@ -7,7 +9,6 @@ source venv/bin/activate
 # Windows executar maquina virtual
 venv\Scripts\activate     
 
-Comandos:
 #Atualizar o pip
 python.exe -m pip install --upgrade pip
 
