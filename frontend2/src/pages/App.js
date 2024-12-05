@@ -31,19 +31,6 @@ function App() {
     <>
       {/* Adicionando o componente TaskList */}
       <TaskList />  {/* Aqui o TaskList será exibido */}
-      
-      <div>
-          <button onClick={btnGetFunctionClick}>GET Function</button>
-      </div>
-      <div>
-          <button onClick={btnPostFunctionClick}>Post Function</button>
-      </div>
-      <div>
-          <button onClick={btnDeleteFunctionClick}>Delete Function</button>
-      </div>
-      <div>
-          <button onClick={btnPutFunctionClick}>Put Function</button>
-      </div>
     </>
   );
 }
