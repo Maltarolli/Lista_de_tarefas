@@ -20,3 +20,7 @@ uvicorn backend.controllers.main:app --reload
 
 #Caso o de cima não de usar esse codigo
 python -m uvicorn ackend.controllers.main:app --reload
+
+Depois desses passos: abrir --> cd frontend2
+instalar scprit do react --->  npm install react-scripts --save
+e depois:  npm start

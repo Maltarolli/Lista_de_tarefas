@@ -1,4 +1,6 @@
+import React from "react";
 import { getFunction, postFunction, deleteFunction, putFunction } from "../services/APIService";
+import TaskList from "../pages/TaskList";  // Importe seu componente TaskList
 
 function App() {
   function btnGetFunctionClick() {
@@ -11,7 +13,7 @@ function App() {
     postFunction()
         .then(data => console.log(data))
         .catch(err => console.error(err));
-}
+  }
 
   function btnDeleteFunctionClick() {
     deleteFunction()
@@ -27,6 +29,9 @@ function App() {
 
   return (
     <>
+      {/* Adicionando o componente TaskList */}
+      <TaskList />  {/* Aqui o TaskList será exibido */}
+      
       <div>
           <button onClick={btnGetFunctionClick}>GET Function</button>
       </div>
@@ -39,12 +44,8 @@ function App() {
       <div>
           <button onClick={btnPutFunctionClick}>Put Function</button>
       </div>
-      
     </>
   );
 }
 
 export default App;
-
-
-
