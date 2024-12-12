@@ -1,6 +1,9 @@
 import React from "react";
 import { getFunction, postFunction, deleteFunction, putFunction } from "../services/APIService";
 import TaskList from "../pages/TaskList";  // Importe seu componente TaskList
+import Login from '../pages/Login'; // Acesso direto ao componente Login
+import Registro from '../pages/Registro'; // Acesso direto ao componente Registro
+
 
 function App() {
   function btnGetFunctionClick() {
