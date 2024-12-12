@@ -43,7 +43,7 @@ def criar_tarefa(tarefa: TarefaBase):
 # Endpoint 3: Buscar uma tarefa por ID
 @app.get("/tarefas/{tarefa_id}", response_model=TarefaCriada)
 def buscar_tarefa(tarefa_id: int):
-    tarefa = Tarefa.buscar_tarefa(tarefa_id)  # Agora o método existe
+    tarefa = Tarefa.buscar_tarefa(tarefa_id) 
     if not tarefa:
         raise HTTPException(status_code=404, detail="Tarefa não encontrada")
 
