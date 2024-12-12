@@ -1,4 +1,4 @@
-cd frontend2
+cd front-end
 
 npm start 
 
